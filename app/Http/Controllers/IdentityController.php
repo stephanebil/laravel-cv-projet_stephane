@@ -25,7 +25,7 @@ class IdentityController extends Controller
      */
     public function create()
     {
-        //
+        return view ('pages.create-identity');
     }
 
     /**
@@ -36,7 +36,37 @@ class IdentityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         // dd($request->all());
+        // validation du formulaire
+        $request->validate([
+            'firstName'=> 'required|max:10',
+            'lastName'=> 'required|max:10',
+            'address'=> 'required|max:30',
+            'zip_code'=> 'required|max:5',
+            'city'=> 'required|max:20',
+            'tel'=> 'required|max:10',
+            'email'=> 'required|max:50',
+            'about'=>'required|max:2000',
+            
+        ]);
+
+        
+
+        // save to db
+        Identity::create([
+            'firstName' => $request->firstName,
+            'lastName' => $request->lastName,
+            'address' => $request->address,
+            'zip_code' => $request->zip_code,
+            'city' => $request->city,
+            'tel' => $request->tel,
+            'email' => $request->email,
+            'about' => $request->about,
+            'created_at' =>now()
+        ]);
+
+        // redirect
+        return redirect()->route('home')->with('status', 'Identity enregistré');
     }
 
     /**

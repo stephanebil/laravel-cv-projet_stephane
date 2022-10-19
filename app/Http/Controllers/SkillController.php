@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Skill;
 use Illuminate\Http\Request;
 
 class SkillController extends Controller
@@ -23,7 +24,7 @@ class SkillController extends Controller
      */
     public function create()
     {
-        //
+        return view ('pages.create-skill');
     }
 
     /**
@@ -34,7 +35,23 @@ class SkillController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         // dd($request->all());
+        // validation du formulaire
+        $request->validate([
+            'name'=> 'required|max:10',
+            
+        ]);
+
+        
+
+        // save to db
+        Skill::create([
+            'name' => $request->name,
+            'created_at' =>now()
+        ]);
+
+        // redirect
+        return redirect()->route('home')->with('status', 'Skill enregistré');
     }
 
     /**

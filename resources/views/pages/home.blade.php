@@ -7,4 +7,7 @@
 						@include('partials._right-box')
 				</div>
 		</div>
+		<div class="text-center p-8">
+			<a href="{{ route('dashboard') }}" class="bg-orange-700 p-2 rounded text-white">Dashboard</a>
+		</div>
 </x-layouts.layout>

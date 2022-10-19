@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Formation;
 use Illuminate\Http\Request;
 
 class FormationController extends Controller
@@ -23,7 +24,7 @@ class FormationController extends Controller
      */
     public function create()
     {
-        //
+        return view ('pages.create-formation');
     }
 
     /**
@@ -34,7 +35,27 @@ class FormationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         // dd($request->all());
+        // validation du formulaire
+        $request->validate([
+            'name'=> 'required|max:50',
+            'year'=> 'required|max:4',
+            'location'=> 'required|max:50',
+            
+        ]);
+
+        
+
+        // save to db
+        Formation::create([
+            'name' => $request->name,
+            'year' => $request->year,
+            'location' => $request->location,
+            'created_at' =>now()
+        ]);
+
+        // redirect
+        return redirect()->route('home')->with('status', 'Expérience enregistré');
     }
 
     /**
