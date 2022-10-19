@@ -1,0 +1,68 @@
+{{-- @php
+$xperiences = [
+    [
+        'job_title' => 'Développeur full-stack Web',
+        'job_year' => '2020-2022',
+        'society' => 'Google Inc',
+    ],
+    [
+        'job_title' => 'Développeur front Web',
+        'job_year' => '2020-2022',
+        'society' => 'Apple Inc',
+    ],
+    [
+        'job_title' => 'Développeur back Web',
+        'job_year' => '2020-2022',
+        'society' => 'Id Formation',
+    ],
+];
+@endphp
+
+<div class="">
+		<x-title title="Experience" />
+		<div class="pt-8">
+				@foreach ($xperiences as $xperience)
+						<x-xperience.xperience-item
+								:job_title="$xperience['job_title']"
+								:job_year="$xperience['job_year']"
+								:society="$xperience['society']"
+						/>
+				@endforeach
+
+		</div>
+</div> --}}
+
+
+@php
+$xperiences = [
+    // [
+    //     'name' => 'Développeur full-stack Web',
+    //     'year' => '2020-2022',
+    //     'location' => 'Google Inc',
+    // ],
+    // [
+    //     'name' => 'Développeur front Web',
+    //     'year' => '2020-2022',
+    //     'location' => 'Apple Inc',
+    // ],
+    // [
+    //     'name' => 'Développeur back Web',
+    //     'year' => '2020-2022',
+    //     'location' => 'Id Formation',
+    // ],
+];
+@endphp
+
+<div class="">
+		<x-title title="Experience" />
+		<div class="pt-8">
+				@foreach ($xperiences as $xperience)
+						<x-xperience.xperience-item
+								:name="$xperience['name']"
+								:year="$xperience['year']"
+								:location="$xperience['location']"
+						/>
+				@endforeach
+
+		</div>
+</div>
